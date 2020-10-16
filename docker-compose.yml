@@ -1,0 +1,15 @@
+version: "3.5"
+services:
+  redis:
+    image: redis
+    volumes:
+      - redisdata_v001:/data
+      - ./redisconf:/usr/local/etc/redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+  redisinsight:
+    image: redislabs/redisinsight
+    ports:
+      - "8001:8001"
+volumes:
+  redisdata_v001:
+    external: true
